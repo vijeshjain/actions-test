@@ -15,10 +15,13 @@ jobs:
 
     - name: Setup SSH Keys and known_hosts
       env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        SSHK: ${{ secrets.SSH_KEY }}
       run: |
-        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.SSH_KEY }}"
+          mkdir -p $HOME/.ssh
+          echo "$SSHK" > $HOME/.ssh/ssh.key
+          chmod 600 $HOME/.ssh/ssh.key
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/ssh.key"
+          git submodule update --init --recursive
         
     - uses: actions/checkout@v2
       with:
