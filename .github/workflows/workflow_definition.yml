@@ -21,12 +21,11 @@ jobs:
           echo "$SSHK" > $HOME/.ssh/ssh.key
           chmod 600 $HOME/.ssh/ssh.key
           export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/ssh.key"
-          git submodule update --init --recursive
         
     - uses: actions/checkout@v2
       with:
         repository: aws-actions/codeguru-reviewer
-        token: ${{ secrets.PAT }}
-#         ssh-key: ${{ secrets.SSH_KEY }}
+#         token: ${{ secrets.PAT }}
+        ssh-key: ${{ secrets.SSH_KEY }}
         ref: refs/heads/main
         path: ./.github/actions/codeguru-reviewer
