@@ -12,6 +12,11 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2
+    
+    - name: Checkout
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+      run: git clone git@github.com:aws-actions/codeguru-reviewer.git
 
 #     - name: Setup SSH Keys and known_hosts
 #       env:
@@ -45,6 +50,3 @@ jobs:
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
       run: git clone git@github.com:aws-actions/codeguru-reviewer.git
-
-          ssh-add -D
-          rm -Rf *
