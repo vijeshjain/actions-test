@@ -1,0 +1,21 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Checkout codeguru actions
+      uses: actions/checkout@v2
+      with:
+        repository: aws-actions/codeguru-reviewer
+        token: ${{ secrets.PAT }}
+        ref: refs/heads/main
+        path: ./.github/actions/codeguru-reviewer
