@@ -17,6 +17,6 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: aws-actions/codeguru-reviewer
-        ssh-key: ${{ secrets.PAT }}
+        token: ${{ secrets.PAT }}
         ref: refs/heads/main
         path: ./.github/actions/codeguru-reviewer
