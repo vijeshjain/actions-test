@@ -11,35 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-#     - name: Checkout codeguru actions
-#       run: |
-#         eval $(ssh-agent -s)
-#         echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-#         mkdir -p ~/.ssh
-#         chmod 700 ~/.ssh 
-#         ssh-keyscan github.com >> ~/.ssh/known_hosts
-#         chmod 644 ~/.ssh/known_hosts
-    - name: Checkout now
-      uses: actions/github-script@v3
       with:
-        script: |
-          eval $(ssh-agent -s)
-          echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh 
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-          git clone git@github.com:aws-actions/codeguru-reviewer.git
-          codeguru-reviewer/entrypoint.sh
-
-      
-
-
-
-#       with:
-#         repository: aws-actions/codeguru-reviewer
-# #         token: ${{ secrets.PAT }}
-#         ssh-key: ${{ secrets.SSH_KEY }}
-#         ref: refs/heads/main
-#         path: ./.github/actions/codeguru-reviewer
+        repository: aws-actions/codeguru-reviewer
+#       token: ${{ secrets.PAT }}
+        ssh-key: ${{ secrets.SSH_KEY }}
+        ref: refs/heads/main
+        path: ./.github/actions/codeguru-reviewer
