@@ -27,6 +27,6 @@ jobs:
       with:
         repository: aws-actions/codeguru-reviewer
 #       token: ${{ secrets.PAT }}
-        ssh-key: ${{ secrets.SSH_KEY }}
+#         ssh-key: ${{ secrets.SSH_KEY }}
         ref: refs/heads/main
         path: ./.github/actions/codeguru-reviewer
