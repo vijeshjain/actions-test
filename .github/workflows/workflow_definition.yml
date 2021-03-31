@@ -13,11 +13,6 @@ jobs:
     
     - uses: actions/checkout@v2
     
-    - name: Checkout
-      env:
-        token: ${{ secrets.PAT }}
-      run: git clone git@github.com:aws-actions/codeguru-reviewer.git
-
 #     - name: Setup SSH Keys and known_hosts
 #       env:
 #         SSHK: ${{ secrets.SSH_KEY }}
